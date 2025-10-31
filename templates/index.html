@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cripto hive</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+  </head>
+
+  <body>
+    <section id="main1">
+      <header class="header">
+        <div class="logo">
+          <img id="logopng" src="/static/logo.png" alt="" />
+          <div id="inputld">
+            <div class="theme-toggle">
+              <input type="checkbox" id="theme-input" class="theme-input">
+              <label for="theme-input" class="theme-label">
+                <span class="theme-text">🌙</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="header-right">
+          <p class="coins-text">COINS</p>
+        </div>
+      </header>
+
+      <div  class="main-content">
+        <div class="content-left">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 0px;
+            "
+          >
+            <h2 class="main-title">What is CRIPTO HIVE</h2>
+            <div class="white-box-1">
+              <video style="margin-left: -40%;margin-bottom: 10%;border-radius: 100%;"
+                src="/static/coin.mp4"
+                muted
+                autoplay
+                loop
+                id="videocoin"
+              ></video>
+            </div>
+          </div>
+
+          <p class="main-text">
+            At CRIPTOHIVE, we believe that blockchain technology and
+            cryptocurrencies are more than financial assets—they are the future
+            of finance and economic freedom. Our mission is to democratize
+            access to this future by providing a secure, intuitive, and
+            innovative platform for investors of all levels to participate in
+            the digital revolution.
+          </p>
+        </div>
+
+        <div class="content-right">
+          <div class="white-box-2">
+            <div id="coin-container">
+              <div class="coins">
+                <img
+                  style="height: 70px; width: auto; margin-left: 2%"
+                  src="/static/bitcoin.png"
+                  alt=""
+                />
+                <p style="margin-left: 2%">BITCOIN</p>
+                <div id="coin-info">
+                  <p>{{precobit}}</p>
+                </div>
+              </div>
+              <div class="coins">
+                <img
+                  style="height: 100px; width: auto; margin-left: -3%"
+                  src="/static/dogecoin.png"
+                  alt=""
+                />
+                <p style="margin-left: -3%">DOGECOIN</p>
+                <div id="coin-info" >
+                  <p>{{pricedog}}</p>
+                </div>
+              </div>
+              <div class="coins">
+                <img
+                  style="height: 80px; width: auto"
+                  src="/static/etherium.png"
+                  alt=""
+                />
+                <p style="margin-left: 2%">ETHERIUM</p>
+                <div id="coin-info" >
+                  <p>{{priceeth}}</p>
+                </div>
+              </div>
+              <div class="coins">
+                <img
+                  style="height: 70px; width: auto; margin-left: 2%"
+                  src="/static/dopex.png"
+                  alt=""
+                />
+                <p style="margin-left: 2%">DOPEX</p>
+                <div id="coin-info" >
+                  <p>{{pricedpx}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Theme toggle functionality
+      const themeInput = document.getElementById('theme-input');
+      const body = document.body;
+      const themeText = document.querySelector('.theme-text');
+
+      // Function to apply theme
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          themeInput.checked = true;
+          body.classList.add('light-mode');
+          themeText.textContent = '☀️';
+        } else {
+          themeInput.checked = false;
+          body.classList.remove('light-mode');
+          themeText.textContent = '🌙';
+        }
+      }
+
+      // Load saved theme or default to dark
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      applyTheme(savedTheme);
+
+      // Toggle theme
+      themeInput.addEventListener('change', function() {
+        const newTheme = this.checked ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+
+      // Listen for system theme changes
+      if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+        mediaQuery.addListener(function(e) {
+          if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'light' : 'dark');
+          }
+        });
+      }
+    </script>
+
+  </body>
+</html>
