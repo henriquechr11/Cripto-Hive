@@ -57,27 +57,39 @@ def home():
     bt_price = pricebt_raw.get('bitcoin', {}).get('usd')
     bt_change = pricebt_raw.get('bitcoin', {}).get('usd_24h_change')
     if isinstance(bt_price, (int, float)) and isinstance(bt_change, (int, float)):
-        pricebt = f"USD {float(bt_price)}  |  {bt_change:.2f}%"
+        pricebt = f"{float(bt_price):,.2f}".replace(',', ' ')
+        bt_change_formatted = bt_change
+        bt_change_class = 'positive' if bt_change > 0 else 'negative' if bt_change < 0 else ''
     else:
-        pricebt = "USD(0,00) | 24h: 0,00%"
+        pricebt = "0.00"
+        bt_change_formatted = 0.0
+        bt_change_class = ''
 
 
     pricedg_raw = cg.get_price(ids='dogecoin', vs_currencies='usd' , include_24hr_change = True)
     dg_price = pricedg_raw.get('dogecoin', {}).get('usd')
     dg_change = pricedg_raw.get('dogecoin', {}).get('usd_24h_change')
     if isinstance(dg_price, (int, float)) and isinstance(dg_change, (int, float)):
-        pricedg = f"USD {float(dg_price)} |  {dg_change:.2f}%"
+        pricedg = f"{float(dg_price):,.2f}".replace(',', ' ')
+        dg_change_formatted = dg_change
+        dg_change_class = 'positive' if dg_change > 0 else 'negative' if dg_change < 0 else ''
     else:
-        pricedg = "USD(0,0aa) | 24h: 0,00%"
+        pricedg = "0.00"
+        dg_change_formatted = 0.0
+        dg_change_class = ''
 
 
     priceet_raw = cg.get_price(ids='ethereum', vs_currencies='usd' , include_24hr_change = True)
     et_price = priceet_raw.get('ethereum', {}).get('usd')
     et_change = priceet_raw.get('ethereum', {}).get('usd_24h_change')
     if isinstance(et_price, (int, float)) and isinstance(et_change, (int, float)):
-        priceet = f"USD {float(et_price)}  |  {et_change:.2f}%"
+        priceet = f"{float(et_price):,.2f}".replace(',', ' ')
+        et_change_formatted = et_change
+        et_change_class = 'positive' if et_change > 0 else 'negative' if et_change < 0 else ''
     else:
-        pricedg = "USD(0,00) | 24h: 0,00%"
+        priceet = "0.00"
+        et_change_formatted = 0.0
+        et_change_class = ''
 
 
 
@@ -85,21 +97,29 @@ def home():
     px_price = pricedpx_raw.get('dopex', {}).get('usd')
     px_change = pricedpx_raw.get('dopex', {}).get('usd_24h_change')
     if isinstance(px_price, (int, float)) and isinstance(px_change, (int, float)):
-        pricedopx = f"USD {float(px_price)}  |  {px_change:.2f}%"
+        pricedopx = f"{float(px_price):,.2f}".replace(',', ' ')
+        px_change_formatted = px_change
+        px_change_class = 'positive' if px_change > 0 else 'negative' if px_change < 0 else ''
     else:
-        pricedopx = "USD(0,00) | 24h: 0,00%"
+        pricedopx = "0.00"
+        px_change_formatted = 0.0
+        px_change_class = ''
 
 
     
 
 
-    return render_template("index.html" , precobit=pricebt, pricedog= pricedg, priceeth=priceet,  pricedpx=pricedopx)
+    return render_template("index.html" , 
+                         precobit=pricebt, changebit=bt_change_formatted, changebit_class=bt_change_class,
+                         pricedog=pricedg, changedog=dg_change_formatted, changedog_class=dg_change_class,
+                         priceeth=priceet, changeeth=et_change_formatted, changeeth_class=et_change_class,
+                         pricedpx=pricedopx, changedpx=px_change_formatted, changedpx_class=px_change_class)
 
-
+        
 
 if __name__ == "__main__":
     app.run()
 
 
 
-
+    

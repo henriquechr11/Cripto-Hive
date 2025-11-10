@@ -149,6 +149,8 @@ body {
   margin-right: 5rem;
   transition: all 0.3s ease;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  user-select: none;
 }
 
 .coins-text:hover {
@@ -219,6 +221,23 @@ body {
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
+}
+
+.price-value {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.change-value {
+  font-weight: bold;
+}
+
+.change-value.positive {
+  color: #4caf50;
+}
+
+.change-value.negative {
+  color: #f44336;
 }
 
 #coin-container {
@@ -318,6 +337,14 @@ body {
   color: #666;
 }
 
+.light-mode .change-value.positive {
+  color: #4caf50;
+}
+
+.light-mode .change-value.negative {
+  color: #f44336;
+}
+
 .light-mode .header::before {
   background: linear-gradient(
     90deg,
@@ -327,4 +354,191 @@ body {
     #666,
     transparent
   );
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  margin: auto;
+  padding: 0;
+  border: 2px solid #bc8138;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: slideDown 0.3s ease;
+  position: relative;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #bc8138;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.modal-header h2 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.modal-close {
+  color: #bc8138;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+  user-select: none;
+}
+
+.modal-close:hover {
+  color: #ffd700;
+  transform: scale(1.2) rotate(90deg);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-coin-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(188, 129, 56, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-coin-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #bc8138;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(188, 129, 56, 0.3);
+}
+
+.modal-coin-item:last-child {
+  margin-bottom: 0;
+}
+
+.modal-coin-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.modal-coin-info {
+  flex: 1;
+}
+
+.modal-coin-info h3 {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.modal-coin-info p {
+  color: #cccccc;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Light Mode Modal */
+.light-mode .modal-content {
+  background-color: #ffffff;
+  border-color: #bc8138;
+}
+
+.light-mode .modal-header {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  border-bottom-color: #bc8138;
+}
+
+.light-mode .modal-header h2 {
+  color: #333;
+  text-shadow: none;
+}
+
+.light-mode .modal-coin-item {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(188, 129, 56, 0.3);
+}
+
+.light-mode .modal-coin-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #bc8138;
+}
+
+.light-mode .modal-coin-info h3 {
+  color: #333;
+}
+
+.light-mode .modal-coin-info p {
+  color: #666;
+}
+
+/* Scrollbar styling for modal */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #bc8138;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
 }

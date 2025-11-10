@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="header-right">
-          <p class="coins-text">COINS</p>
+          <p class="coins-text" id="coins-button">COINS</p>
         </div>
       </header>
 
@@ -70,7 +70,7 @@
                 />
                 <p style="margin-left: 2%">BITCOIN</p>
                 <div id="coin-info">
-                  <p>{{precobit}}</p>
+                  <p>USD <span class="price-value">{{precobit}}</span> | <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span></p>
                 </div>
               </div>
               <div class="coins">
@@ -79,9 +79,9 @@
                   src="/static/dogecoin.png"
                   alt=""
                 />
-                <p style="margin-left: -3%">DOGECOIN</p>
+                <p style="margin-left: -4%">DOGECOIN</p>
                 <div id="coin-info" >
-                  <p>{{pricedog}}</p>
+                  <p>USD <span class="price-value">{{pricedog}}</span> | <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span></p>
                 </div>
               </div>
               <div class="coins">
@@ -90,9 +90,9 @@
                   src="/static/etherium.png"
                   alt=""
                 />
-                <p style="margin-left: 2%">ETHERIUM</p>
+                <p style="margin-left: 3%">ETHERIUM</p>
                 <div id="coin-info" >
-                  <p>{{priceeth}}</p>
+                  <p>USD <span class="price-value">{{priceeth}}</span> | <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span></p>
                 </div>
               </div>
               <div class="coins">
@@ -103,7 +103,7 @@
                 />
                 <p style="margin-left: 2%">DOPEX</p>
                 <div id="coin-info" >
-                  <p>{{pricedpx}}</p>
+                  <p>USD <span class="price-value">{{pricedpx}}</span> | <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span></p>
                 </div>
               </div>
             </div>
@@ -111,6 +111,46 @@
         </div>
       </div>
     </section>
+
+    <!-- Modal -->
+    <div id="coins-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Available Coins</h2>
+          <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-coin-item">
+            <img src="/static/bitcoin.png" alt="Bitcoin" class="modal-coin-icon">
+            <div class="modal-coin-info">
+              <h3>BITCOIN</h3>
+              <p>USD <span class="price-value">{{precobit}}</span> | <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span></p>
+            </div>
+          </div>
+          <div class="modal-coin-item">
+            <img src="/static/dogecoin.png" alt="Dogecoin" class="modal-coin-icon">
+            <div class="modal-coin-info">
+              <h3>DOGECOIN</h3>
+              <p>USD <span class="price-value">{{pricedog}}</span> | <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span></p>
+            </div>
+          </div>
+          <div class="modal-coin-item">
+            <img src="/static/etherium.png" alt="Ethereum" class="modal-coin-icon">
+            <div class="modal-coin-info">
+              <h3>ETHERIUM</h3>
+              <p>USD <span class="price-value">{{priceeth}}</span> | <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span></p>
+            </div>
+          </div>
+          <div class="modal-coin-item">
+            <img src="/static/dopex.png" alt="Dopex" class="modal-coin-icon">
+            <div class="modal-coin-info">
+              <h3>DOPEX</h3>
+              <p>USD <span class="price-value">{{pricedpx}}</span> | <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       // Theme toggle functionality
@@ -151,6 +191,35 @@
           }
         });
       }
+
+      // Modal functionality
+      const coinsButton = document.getElementById('coins-button');
+      const modal = document.getElementById('coins-modal');
+      const closeButton = document.querySelector('.modal-close');
+
+      // Open modal when clicking COINS
+      coinsButton.addEventListener('click', function() {
+        modal.style.display = 'flex';
+      });
+
+      // Close modal when clicking X
+      closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+
+      // Close modal when clicking outside of it
+      window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      // Close modal with ESC key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+          modal.style.display = 'none';
+        }
+      });
     </script>
 
   </body>
