@@ -1,0 +1,8 @@
+numpy
+requests
+os
+pprint
+dotenv
+pycoingecko
+pandas
+flask
