@@ -1,8 +1,7 @@
 numpy
 requests
-os
 pprint
-dotenv
+python-dotenv
 pycoingecko
 pandas
 flask
