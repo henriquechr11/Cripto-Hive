@@ -153,44 +153,7 @@
     </div>
 
     <script>
-      // Theme toggle functionality
-      const themeInput = document.getElementById('theme-input');
-      const body = document.body;
-      const themeText = document.querySelector('.theme-text');
-
-      // Function to apply theme
-      function applyTheme(theme) {
-        if (theme === 'light') {
-          themeInput.checked = true;
-          body.classList.add('light-mode');
-          themeText.textContent = '☀️';
-        } else {
-          themeInput.checked = false;
-          body.classList.remove('light-mode');
-          themeText.textContent = '🌙';
-        }
-      }
-
-      // Load saved theme or default to dark
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      applyTheme(savedTheme);
-
-      // Toggle theme
-      themeInput.addEventListener('change', function() {
-        const newTheme = this.checked ? 'light' : 'dark';
-        applyTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-
-      // Listen for system theme changes
-      if (window.matchMedia) {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-        mediaQuery.addListener(function(e) {
-          if (!localStorage.getItem('theme')) {
-            applyTheme(e.matches ? 'light' : 'dark');
-          }
-        });
-      }
+   
 
       // Modal functionality
       const coinsButton = document.getElementById('coins-button');
@@ -224,3 +187,4 @@
 
   </body>
 </html>
+
