@@ -542,3 +542,28 @@ body {
 .modal-content::-webkit-scrollbar-thumb:hover {
   background: #ffd700;
 }
+
+
+  @media screen and (max-width: 720px){
+
+
+    .main-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      height: auto;
+    }
+
+    .content-left, .content-right {
+      padding: 1rem 0;
+    }
+
+    .header-right {
+      gap: 2rem;
+    }
+
+    .coins-text {
+      margin-right: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
