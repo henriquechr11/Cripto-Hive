@@ -547,6 +547,10 @@ body {
   @media screen and (max-width: 720px){
 
 
+     #main1 {
+    height: auto;
+  }
+
     .main-content {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
@@ -566,4 +570,5 @@ body {
       font-size: 1.5rem;
     }
   }
+
 
