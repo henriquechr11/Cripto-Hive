@@ -1,189 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cripto hive</title>
-    <link rel="stylesheet" href="/static/style.css"/>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cripto Hive</title>
 
-  <body>
-    <section id="main1">
-      <header class="header">
-        <div class="logo">
-          <img id="logopng" src="/static/logo.png" alt="" />
-          <div id="inputld">
-            <div class="theme-toggle">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-            </div>
-          </div>
-        </div>
-        <div class="header-right">
-          <p class="coins-text" id="coins-button">COINS</p>
-        </div>
-      </header>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-orbe orbe-1"></div>
+  <div class="bg-orbe orbe-2"></div>
+  <div class="bg-orbe orbe-3"></div>
 
-      <div  class="main-content">
-        <div class="content-left">
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-              gap: 0px;
-            "
-          >
-            <h2 class="main-title">What is CRIPTO HIVE</h2>
-            <div class="white-box-1">
-              <video style="margin-left: -40%;margin-bottom: 10%;border-radius: 100%;"
-                src="/static/coin.mp4"
-                muted
-                autoplay
-                loop
-                id="videocoin"
-              ></video>
-            </div>
-          </div>
-
-          <p class="main-text">
-            At CRIPTOHIVE, we believe that blockchain technology and
-            cryptocurrencies are more than financial assets—they are the future
-            of finance and economic freedom. Our mission is to democratize
-            access to this future by providing a secure, intuitive, and
-            innovative platform for investors of all levels to participate in
-            the digital revolution.
-          </p>
-        </div>
-
-        <div class="content-right">
-          <div class="white-box-2">
-            <div id="coin-container">
-              <div class="coins">
-                <img
-                  style="height: 70px; width: auto; margin-left: 2%"
-                  src="/static/bitcoin.png"
-                  alt=""
-                />
-                <p style="margin-left: 2%">BITCOIN</p>
-                <div id="coin-info">
-                  <p>USD <span class="price-value">{{precobit}}</span> | <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span></p>
-                </div>
-              </div>
-              <div class="coins">
-                <img
-                  style="height: 100px; width: auto; margin-left: -3%"
-                  src="/static/dogecoin.png"
-                  alt=""
-                />
-                <p style="margin-left: -4%">DOGECOIN</p>
-                <div id="coin-info" >
-                  <p>USD <span class="price-value">{{pricedog}}</span> | <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span></p>
-                </div>
-              </div>
-              <div class="coins">
-                <img
-                  style="height: 80px; width: auto"
-                  src="/static/etherium.png"
-                  alt=""
-                />
-                <p style="margin-left: 3%">ETHERIUM</p>
-                <div id="coin-info" >
-                  <p>USD <span class="price-value">{{priceeth}}</span> | <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span></p>
-                </div>
-              </div>
-              <div class="coins">
-                <img
-                  style="height: 70px; width: auto; margin-left: 2%"
-                  src="/static/dopex.png"
-                  alt=""
-                />
-                <p style="margin-left: 2%">DOPEX</p>
-                <div id="coin-info" >
-                  <p>USD <span class="price-value">{{pricedpx}}</span> | <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <header class="header" id="header">
+    <div class="header-inner">
+      <div class="logo">
+        <img id="logopng" src="/static/logo.png" alt="Cripto Hive" />
+        <span class="logo-text">CRIPTO <span class="logo-accent">HIVE</span></span>
       </div>
-    </section>
+      <div class="header-right">
+        <button class="coins-btn" id="coins-button">
+          <span class="btn-glow"></span>
+          <span class="btn-text">COINS</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <!-- Modal -->
-    <div id="coins-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Available Coins</h2>
-          <span class="modal-close">&times;</span>
+  <section id="main1">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-badge" id="heroBadge">
+          <span class="badge-dot"></span>
+          Cryptocurrency Dashboard
         </div>
-        <div class="modal-body">
-          <div class="modal-coin-item">
-            <img src="/static/bitcoin.png" alt="Bitcoin" class="modal-coin-icon">
-            <div class="modal-coin-info">
-              <h3>BITCOIN</h3>
-              <p>USD <span class="price-value">{{precobit}}</span> | <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span></p>
+
+        <h1 class="main-title" id="mainTitle">
+          What is <span class="text-gradient">CRIPTO HIVE</span>
+        </h1>
+
+        <div class="hero-video-wrapper" id="heroVideo">
+          <div class="video-ring">
+            <div class="video-ring-glow"></div>
+            <video src="/static/coin.mp4" muted autoplay loop id="videocoin"></video>
+          </div>
+        </div>
+
+        <p class="main-text" id="mainText">
+          At CRIPTOHIVE, we believe that blockchain technology and cryptocurrencies are more than financial assets—they are the future of finance and economic freedom. Our mission is to democratize access to this future by providing a secure, intuitive, and innovative platform for investors of all levels to participate in the digital revolution.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <div class="coin-glass-card" id="coinGlassCard">
+          <div class="coin-card-header">
+            <span class="pulse-dot"></span>
+            Live Prices
+            <span class="header-divider"></span>
+          </div>
+
+          <div class="coin-card" data-coin="bitcoin">
+            <div class="coin-icon-wrapper">
+              <img src="/static/bitcoin.png" alt="Bitcoin" />
+            </div>
+            <div class="coin-info">
+              <span class="coin-name">BITCOIN</span>
+              <span class="coin-price">USD <span class="price-value" id="price-btc">{{precobit}}</span></span>
+            </div>
+            <div class="coin-change {{changebit_class}}">
+              <svg class="change-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="{{'M5 0L10 4H0L5 0Z' if changebit_class == 'positive' else 'M5 10L0 6H10L5 10Z'}}" fill="currentColor"/>
+              </svg>
+              <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span>
             </div>
           </div>
-          <div class="modal-coin-item">
-            <img src="/static/dogecoin.png" alt="Dogecoin" class="modal-coin-icon">
-            <div class="modal-coin-info">
-              <h3>DOGECOIN</h3>
-              <p>USD <span class="price-value">{{pricedog}}</span> | <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span></p>
+
+          <div class="coin-card" data-coin="dogecoin">
+            <div class="coin-icon-wrapper">
+              <img src="/static/dogecoin.png" alt="Dogecoin" />
+            </div>
+            <div class="coin-info">
+              <span class="coin-name">DOGECOIN</span>
+              <span class="coin-price">USD <span class="price-value" id="price-doge">{{pricedog}}</span></span>
+            </div>
+            <div class="coin-change {{changedog_class}}">
+              <svg class="change-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="{{'M5 0L10 4H0L5 0Z' if changedog_class == 'positive' else 'M5 10L0 6H10L5 10Z'}}" fill="currentColor"/>
+              </svg>
+              <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span>
             </div>
           </div>
-          <div class="modal-coin-item">
-            <img src="/static/etherium.png" alt="Ethereum" class="modal-coin-icon">
-            <div class="modal-coin-info">
-              <h3>ETHERIUM</h3>
-              <p>USD <span class="price-value">{{priceeth}}</span> | <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span></p>
+
+          <div class="coin-card" data-coin="ethereum">
+            <div class="coin-icon-wrapper">
+              <img src="/static/etherium.png" alt="Ethereum" />
+            </div>
+            <div class="coin-info">
+              <span class="coin-name">ETHEREUM</span>
+              <span class="coin-price">USD <span class="price-value" id="price-eth">{{priceeth}}</span></span>
+            </div>
+            <div class="coin-change {{changeeth_class}}">
+              <svg class="change-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="{{'M5 0L10 4H0L5 0Z' if changeeth_class == 'positive' else 'M5 10L0 6H10L5 10Z'}}" fill="currentColor"/>
+              </svg>
+              <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span>
             </div>
           </div>
-          <div class="modal-coin-item">
-            <img src="/static/dopex.png" alt="Dopex" class="modal-coin-icon">
-            <div class="modal-coin-info">
-              <h3>DOPEX</h3>
-              <p>USD <span class="price-value">{{pricedpx}}</span> | <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span></p>
+
+          <div class="coin-card" data-coin="dopex">
+            <div class="coin-icon-wrapper">
+              <img src="/static/dopex.png" alt="Dopex" />
+            </div>
+            <div class="coin-info">
+              <span class="coin-name">DOPEX</span>
+              <span class="coin-price">USD <span class="price-value" id="price-dpx">{{pricedpx}}</span></span>
+            </div>
+            <div class="coin-change {{changedpx_class}}">
+              <svg class="change-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="{{'M5 0L10 4H0L5 0Z' if changedpx_class == 'positive' else 'M5 10L0 6H10L5 10Z'}}" fill="currentColor"/>
+              </svg>
+              <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <script>
-   
+  <div id="coins-modal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Available Coins</h2>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-coin-item" data-coin="bitcoin">
+          <div class="modal-coin-icon">
+            <img src="/static/bitcoin.png" alt="Bitcoin" />
+          </div>
+          <div class="modal-coin-info">
+            <h3>BITCOIN</h3>
+            <p>USD <span class="price-value">{{precobit}}</span> <span class="change-value {{changebit_class}}">{{changebit|round(2)}}%</span></p>
+          </div>
+        </div>
+        <div class="modal-coin-item" data-coin="dogecoin">
+          <div class="modal-coin-icon">
+            <img src="/static/dogecoin.png" alt="Dogecoin" />
+          </div>
+          <div class="modal-coin-info">
+            <h3>DOGECOIN</h3>
+            <p>USD <span class="price-value">{{pricedog}}</span> <span class="change-value {{changedog_class}}">{{changedog|round(2)}}%</span></p>
+          </div>
+        </div>
+        <div class="modal-coin-item" data-coin="ethereum">
+          <div class="modal-coin-icon">
+            <img src="/static/etherium.png" alt="Ethereum" />
+          </div>
+          <div class="modal-coin-info">
+            <h3>ETHEREUM</h3>
+            <p>USD <span class="price-value">{{priceeth}}</span> <span class="change-value {{changeeth_class}}">{{changeeth|round(2)}}%</span></p>
+          </div>
+        </div>
+        <div class="modal-coin-item" data-coin="dopex">
+          <div class="modal-coin-icon">
+            <img src="/static/dopex.png" alt="Dopex" />
+          </div>
+          <div class="modal-coin-info">
+            <h3>DOPEX</h3>
+            <p>USD <span class="price-value">{{pricedpx}}</span> <span class="change-value {{changedpx_class}}">{{changedpx|round(2)}}%</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      // Modal functionality
-      const coinsButton = document.getElementById('coins-button');
-      const modal = document.getElementById('coins-modal');
-      const closeButton = document.querySelector('.modal-close');
+  <script type="module">
+    import { animate, inView, hover, press } from "https://cdn.jsdelivr.net/npm/motion@11.11.17/+esm";
 
-      // Open modal when clicking COINS
-      coinsButton.addEventListener('click', function() {
-        modal.style.display = 'flex';
+    const h = (el, opts) => {
+      if (!el) return;
+      animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.7, easing: [0.25, 0.1, 0.25, 1], ...opts });
+    };
+
+    const hLeft = (el, opts) => {
+      if (!el) return;
+      animate(el, { opacity: [0, 1], x: [-40, 0] }, { duration: 0.7, easing: [0.25, 0.1, 0.25, 1], ...opts });
+    };
+
+    const hRight = (el, opts) => {
+      if (!el) return;
+      animate(el, { opacity: [0, 1], x: [40, 0] }, { duration: 0.7, easing: [0.25, 0.1, 0.25, 1], ...opts });
+    };
+
+    animate("#header", { y: [-80, 0], opacity: [0, 1] }, { duration: 0.8, easing: [0.25, 0.1, 0.25, 1] });
+
+    hLeft("#heroBadge", { delay: 0.2 });
+    hLeft("#mainTitle", { delay: 0.35 });
+    hLeft("#heroVideo", { delay: 0.5 });
+    hLeft("#mainText", { delay: 0.65 });
+
+    animate("#coinGlassCard", { opacity: [0, 1], scale: [0.95, 1] }, { duration: 0.6, delay: 0.4, easing: [0.25, 0.1, 0.25, 1] });
+
+    document.querySelectorAll(".coin-card").forEach((card, i) => {
+      animate(card, { opacity: [0, 1], x: [30, 0] }, { duration: 0.5, delay: 0.6 + i * 0.12, easing: [0.25, 0.1, 0.25, 1] });
+    });
+
+    document.querySelectorAll(".coin-card").forEach((card) => {
+      hover(
+        card,
+        () => { animate(card, { scale: 1.02, y: -4 }, { duration: 0.2, easing: "ease-out" }); },
+        () => { animate(card, { scale: 1, y: 0 }, { duration: 0.2, easing: "ease-out" }); }
+      );
+    });
+
+    const coinsBtn = document.getElementById("coins-button");
+    const modal = document.getElementById("coins-modal");
+    const closeBtn = document.querySelector(".modal-close");
+
+    if (coinsBtn) {
+      press(coinsBtn, () => {
+        animate(coinsBtn, { scale: 0.95 }, { duration: 0.1 }).finished.then(() => {
+          animate(coinsBtn, { scale: 1 }, { duration: 0.1 });
+        });
       });
 
-      // Close modal when clicking X
-      closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
+      coinsBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+        animate(".modal-backdrop", { opacity: [0, 1] }, { duration: 0.3 });
+        animate(".modal-content", { opacity: [0, 1], y: [40, 0], scale: [0.97, 1] }, { duration: 0.4, easing: [0.25, 0.1, 0.25, 1] });
       });
+    }
 
-      // Close modal when clicking outside of it
-      window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
+    const closeModal = () => {
+      animate(".modal-content", { opacity: [1, 0], y: [0, 20], scale: [1, 0.97] }, { duration: 0.2 }).finished.then(() => {
+        modal.style.display = "none";
+        animate(".modal-backdrop", { opacity: [1, 0] }, { duration: 0.2 });
       });
+    };
 
-      // Close modal with ESC key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'flex') {
-          modal.style.display = 'none';
-        }
-      });
-    </script>
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
 
-  </body>
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+    });
+  </script>
+</body>
 </html>
-
-
-
